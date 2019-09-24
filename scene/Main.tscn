@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scene/dots.gd" type="Script" id=1]
+[ext_resource path="res://obj/dot/dot.tscn" type="PackedScene" id=2]
+
+[node name="Main" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+zoom = Vector2( 2, 2 )
+
+[node name="dots" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="dot" parent="dots" instance=ExtResource( 2 )]
+position = Vector2( 1007.11, 567.354 )
+
+[node name="lines" type="Node2D" parent="dots"]
+z_index = -1
+
+[connection signal="action" from="dots/dot" to="dots" method="_on_dot_action"]
